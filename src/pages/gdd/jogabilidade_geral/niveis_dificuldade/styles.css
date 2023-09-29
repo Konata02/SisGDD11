@@ -1,0 +1,165 @@
+
+.container {
+    width: 100%;
+  }
+  .proprietario-container {
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 30px;
+    margin: 32px auto;
+    
+  }
+  
+  .container-text {
+    width: 100%;
+    height: 140px;
+  }
+  
+  .full-width {
+    width: 100%; /* Faça a caixa de texto ocupar toda a largura do contêiner */
+    height: 100%; /* Faça a caixa de texto ocupar toda a altura do contêiner */
+    box-sizing: border-box; /* Inclua a borda e o preenchimento na largura e altura total */
+  }
+  
+  .about-container {
+    background-color:azure;
+    width: 100%;
+    overflow-y: auto;
+    padding: 0 30px;
+   
+  }
+  .example-container {
+    background-color:  cornflowerblue;
+    width: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-button {
+    background-color: slateblue;
+    color: white;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+  }
+  .container-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    
+  }
+
+  .full-width-button {
+    width: 100%; /* 100% da largura da viewport */
+    height: 40px; /* Altura desejada para o botão */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    font-size: 1.2rem; /* Tamanho da fonte do texto */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Altera o cursor do mouse para indicar que é clicável */
+  }
+  
+  
+  .container-buttons button {
+    margin-right: 10px;
+  }
+  
+  .proprietario-container  header{
+    display: flex;
+    align-items: center;
+  }
+  
+  .subheader  {
+      margin-left: 200px;
+  }
+  
+  .proprietario-container header span{
+    font-size: 20px;
+    margin-left: 18px;
+  }
+  
+  .proprietario-container header span strong{
+    color: #251FC5;
+  }
+  
+  .proprietario-container header img{
+    height: 64px;
+  }
+  
+  .proprietario-container header a{
+    width: 260px;
+    margin-left: 18px;
+    margin-top: 0;
+  }
+  
+  .proprietario-container header button{
+    height: 60px;
+    width: 60px;
+    border-radius: 4px;
+    border: 1px solid #DCDCE6;
+    background: transparent;
+    margin-left: 16px;
+    transition: border-color 0.5s;
+  }
+  
+  .proprietario-container header button:hover{
+    border-color: #251FC5;
+  }
+  
+  .proprietario-container h1 {
+    margin-top: 80px;
+    margin-bottom: 24px;
+  }
+  
+  
+  
+  .proprietario-container tr td{
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    position:static;
+  }
+  
+  .proprietario-container tr td button {
+    right: 24px;
+    top: 24px;
+    border: 0;
+    background: transparent;  
+  }
+  
+  .proprietario-container tr td button + button{
+    top: 50px;  
+  }
+  
+  .proprietario-container tr td button:hover{
+    opacity: 0.8;  
+  }
+  
+  .proprietario-container tr td strong{
+    display: block;
+    margin-bottom: 16px;
+    color: #41414D;
+  }
+  
+  .proprietario-container  p + strong{
+    margin-top: 32px;
+  
+  }
+  
+  .proprietario-container   p {
+    color: #737380;
+    line-height: 21px;
+    font-size: 16px;
+  }
+  
+  
+  

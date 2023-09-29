@@ -1,0 +1,13 @@
+
+.GerarRoteiro {
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  
+  align-self: center;
+  
+}
+
+.GerarRoteiro:hover {
+  background: #575858;
+}
