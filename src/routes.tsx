@@ -26,6 +26,7 @@ import { BrowserRouter, Route, Routes as RouterRoutes } from 'react-router-dom';
 import Home from '../src/pages/home';
 import Login from '../src/pages/genero';
 import GDD from '../src/pages/gdd';
+import Relatorio from '../src/pages/relatorio'
 import Dashboard from '../src/pages/dashboard';
 import Jogabilidade from '../src/pages/gdd/conceito_jogo/jogabilidade';
 import Historia from '../src/pages/gdd/conceito_jogo/história';
@@ -66,6 +67,7 @@ const Routes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/genero" element={<Login />} />
         <Route path="/gdd" element={<GDD />} />
+        <Route path="/relatorio" element={<Relatorio />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/jogabilidade" element={<Jogabilidade />} />
         <Route path="/historia" element={<Historia />} />

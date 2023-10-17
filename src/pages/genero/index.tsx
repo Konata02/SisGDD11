@@ -15,7 +15,7 @@ import QuebraCabeca from '../../assets/images/quebra-cabeças.png'
 import Ritmo from '../../assets/images/Ritmo.png';
 import RPG from '../../assets/images/RPG.png';
 import Simulacao from '../../assets/images/Simulação.png'
-
+import NoImage from '../../assets/images/nocontentimage.png'
 
 
 import {

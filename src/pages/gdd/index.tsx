@@ -12,7 +12,10 @@ import { FiLogIn } from 'react-icons/fi';
 const GDD: React.FC = () => {
 
   const [showExample, setShowExample] = useState(false);
-  const [conceito, setConceito] = useState("Digite o conceito do jogo...")
+  const [conceito, setConceito] = useState(() => {
+    const storedConceito = localStorage.getItem('conceito');
+    return storedConceito !== null ? storedConceito : 'Digite o conceito do jogo...';
+  });
 
   const handleClick = () => {
     setShowExample(!showExample);
@@ -598,12 +601,13 @@ const GDD: React.FC = () => {
 
           <div className="container-buttons">
               <div className="acesso about-container2 p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-                <Link to="/genero">
+                <Link to="/relatorio">
                   <span>
                   <FiLogIn size={35} color="#FFFFFF" />
                   </span>
                 
                   <strong>Gerar o Roteiro!</strong>
+                  
                 </Link>
 
               </div>

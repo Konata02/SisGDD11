@@ -12,6 +12,17 @@ const GDD: React.FC = () => {
 
   const [showExample, setShowExample] = useState(false);
 
+  const [titulo, setTitulo] = useState(() => {
+    const storedTitulo = localStorage.getItem('titulo');
+    return storedTitulo !== null ? storedTitulo : 'Digite o titulo do jogo...';
+  });
+
+  function gravaTitulo(event : any) {
+    setTitulo(event.target.value)
+    localStorage.setItem('titulo',titulo)
+    console.log(localStorage.getItem('titulo'))
+  }
+  
   const handleClick = () => {
     setShowExample(!showExample);
   };
@@ -59,7 +70,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Título do Jogo</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0"  value={titulo} onChange={gravaTitulo} > </textarea> 
       </div>
       
     </div>
