@@ -27,6 +27,18 @@ const GDD: React.FC = () => {
     console.log(localStorage.getItem('conceito'))
   }
   
+  
+  const [aplataforma, setAPlataformas] = useState(() => {
+    const storedConceito = localStorage.getItem('aplataforma');
+    return storedConceito !== null ? storedConceito : 'Alguma anotação adicional sobre a plataforma??';
+  });
+  
+  function gravaAPlataformas(event : any) {
+    setAPlataformas(event.target.value)
+    localStorage.setItem('aplataforma',aplataforma)
+    console.log(localStorage.getItem('aplataforma'))
+  }
+
 
 
   return (
@@ -209,7 +221,7 @@ const GDD: React.FC = () => {
                     <h1 className="display-4 fst-italic"></h1>
                     <p className="lead my-3 ">Anotações sobre a plataforma</p>
                     <div className="container-text">
-                      <textarea className="full-width px-0"></textarea>
+                      <textarea className="full-width px-0" onChange={gravaAPlataformas} ></textarea>
                     </div>
 
                   </div>
