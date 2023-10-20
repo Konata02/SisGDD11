@@ -16,6 +16,17 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [mecanica, setMecanica] = useState(() => {
+    const storedMecanica = localStorage.getItem('mecanica');
+    return storedMecanica !== null ? storedMecanica : 'Informe sobre a jogabilidade de seu jogo...';
+  });
+
+  function gravaMecanica(event : any) {
+    setMecanica(event.target.value)
+    localStorage.setItem('mecanica',mecanica)
+    console.log(localStorage.getItem('mecanica'))
+  }
+  
 
   
   return (
@@ -63,7 +74,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Mecanicas do Jogo</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={mecanica} onChange={gravaMecanica}></textarea> 
       </div>
       
     </div>

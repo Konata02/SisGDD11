@@ -16,6 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [ambiente, setAmbiente] = useState(() => {
+    const storedAmbiente = localStorage.getItem('ambiente');
+    return storedAmbiente !== null ? storedAmbiente : 'Como é o cenário de seu jogo?';
+  });
+
+  function gravaAmbiente(event : any) {
+    setAmbiente(event.target.value)
+    localStorage.setItem('ambiente',ambiente)
+    console.log(localStorage.getItem('ambiente'))
+  }
 
   
   return (
@@ -64,7 +74,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Ambiente do Jogo</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={ambiente} onChange={gravaAmbiente}></textarea> 
       </div>
       
     </div>

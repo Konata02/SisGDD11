@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [publicoA, setPublicoA] = useState(() => {
+    const storedPublicoA = localStorage.getItem('publicoA');
+    return storedPublicoA !== null ? storedPublicoA : 'Quais são as inspirações que você está adotando?';
+  });
 
+  function gravaPublicoA(event : any) {
+    setPublicoA(event.target.value)
+    localStorage.setItem('publicoA',publicoA)
+    console.log(localStorage.getItem('publicoA'))
+  }
   
   return (
     <div className ="container">
@@ -63,7 +72,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Público-alvo</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={publicoA} onChange={gravaPublicoA}></textarea> 
       </div>
       
     </div>

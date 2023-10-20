@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [definicaoV, setDefinicaoV] = useState(() => {
+    const storedDefinicaoV = localStorage.getItem('definicaoV');
+    return storedDefinicaoV !== null ? storedDefinicaoV : 'Defina as versões de seu jogo...';
+  });
 
+  function gravaDefinicaoV(event : any) {
+    setDefinicaoV(event.target.value)
+    localStorage.setItem('definicaoV',definicaoV)
+    console.log(localStorage.getItem('definicaoV'))
+  }
   
   return (
     <div className ="container">
@@ -62,7 +71,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Definição das Versões</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={definicaoV} onChange={gravaDefinicaoV}></textarea> 
       </div>
       
     </div>

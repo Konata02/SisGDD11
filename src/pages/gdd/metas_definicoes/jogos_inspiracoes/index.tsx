@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [jogosI, setJogosI] = useState(() => {
+    const storedJogosI = localStorage.getItem('jogosI');
+    return storedJogosI !== null ? storedJogosI : 'Quais são as inspirações que você está adotando?';
+  });
 
+  function gravaJogosI(event : any) {
+    setJogosI(event.target.value)
+    localStorage.setItem('jogosI',jogosI)
+    console.log(localStorage.getItem('jogosI'))
+  }
   
   return (
     <div className ="container">
@@ -62,9 +71,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Jogos e Inspirações</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={jogosI} onChange={gravaJogosI}></textarea> 
       </div>
       
     </div>

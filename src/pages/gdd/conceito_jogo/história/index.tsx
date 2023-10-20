@@ -16,6 +16,17 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [conceitoH, setConceitoH] = useState(() => {
+    const storedConceitoH = localStorage.getItem('conceitoH');
+    return storedConceitoH !== null ? storedConceitoH : 'Sobre a história...';
+  });
+
+  function gravaConceitoH(event : any) {
+    setConceitoH(event.target.value)
+    localStorage.setItem('conceitoH',conceitoH)
+    console.log(localStorage.getItem('conceitoH'))
+  }
+
 
   
   return (
@@ -60,7 +71,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Conceito da História</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={conceitoH} onChange={gravaConceitoH}></textarea> 
       </div>
       
     </div>

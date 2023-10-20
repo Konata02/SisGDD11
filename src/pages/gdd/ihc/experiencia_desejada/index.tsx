@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [experienciaD, setExperienciaD] = useState(() => {
+    const storedExperienciaD = localStorage.getItem('experienciaD');
+    return storedExperienciaD !== null ? storedExperienciaD : 'Que tipo de experiência você deseja passar para seus jogadores?';
+  });
 
+  function gravaExperienciaD(event : any) {
+    setExperienciaD(event.target.value)
+    localStorage.setItem('experienciaD',experienciaD)
+    console.log(localStorage.getItem('experienciaD'))
+  }
   
   return (
     <div className ="container">
@@ -64,9 +73,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Experiência Desejada</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={experienciaD} onChange={gravaExperienciaD}></textarea> 
       </div>
 
       <div className="spacing-container"></div> 

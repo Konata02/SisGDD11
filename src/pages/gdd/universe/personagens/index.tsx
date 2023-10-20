@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [personagens, setPersonagens] = useState(() => {
+    const storedPersonagens = localStorage.getItem('personagens');
+    return storedPersonagens !== null ? storedPersonagens : 'Quais são os personagens relevantes em seu universo?';
+  });
 
+  function gravaPersonagens(event : any) {
+    setPersonagens(event.target.value)
+    localStorage.setItem('personagens',personagens)
+    console.log(localStorage.getItem('personagens'))
+  }
   
   return (
     <div className ="container">
@@ -61,7 +70,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Personagens</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={personagens} onChange={gravaPersonagens}></textarea> 
       </div>
       
     </div>

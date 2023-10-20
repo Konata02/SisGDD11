@@ -16,6 +16,17 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [niveisD, setNiveisD] = useState(() => {
+    const storedNiveisD = localStorage.getItem('niveisD');
+    return storedNiveisD !== null ? storedNiveisD : 'Como funciona o nível de dificuldade de seu jogo?';
+  });
+
+  function gravaNiveisD(event : any) {
+    setNiveisD(event.target.value)
+    localStorage.setItem('niveisD',niveisD)
+    console.log(localStorage.getItem('niveisD'))
+  }
+  
 
   
   return (
@@ -64,7 +75,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Níveis de Dificuldade</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={niveisD}  onChange={gravaNiveisD}></textarea> 
       </div>
       
           

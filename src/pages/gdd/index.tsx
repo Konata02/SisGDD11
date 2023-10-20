@@ -12,15 +12,16 @@ import { FiLogIn } from 'react-icons/fi';
 const GDD: React.FC = () => {
 
   const [showExample, setShowExample] = useState(false);
+  
+  const handleClick = () => {
+    setShowExample(!showExample);
+  };
+  
   const [conceito, setConceito] = useState(() => {
     const storedConceito = localStorage.getItem('conceito');
     return storedConceito !== null ? storedConceito : 'Digite o conceito do jogo...';
   });
-
-  const handleClick = () => {
-    setShowExample(!showExample);
-  };
-
+  
   function gravaConceito(event : any) {
     setConceito(event.target.value)
     localStorage.setItem('conceito',conceito)
@@ -37,6 +38,17 @@ const GDD: React.FC = () => {
     setAPlataformas(event.target.value)
     localStorage.setItem('aplataforma',aplataforma)
     console.log(localStorage.getItem('aplataforma'))
+  }
+
+  const [metas, setMetas] = useState(() => {
+    const storedMetas = localStorage.getItem('metas');
+    return storedMetas !== null ? storedMetas : 'Informe um pouco a respeito de suas metas e definições...';
+  });
+  
+  function gravaMetas(event : any) {
+    setMetas(event.target.value)
+    localStorage.setItem('metas',metas)
+    console.log(localStorage.getItem('metas'))
   }
 
 
@@ -221,7 +233,7 @@ const GDD: React.FC = () => {
                     <h1 className="display-4 fst-italic"></h1>
                     <p className="lead my-3 ">Anotações sobre a plataforma</p>
                     <div className="container-text">
-                      <textarea className="full-width px-0" onChange={gravaAPlataformas} ></textarea>
+                      <textarea className="full-width px-0" value={aplataforma}  onChange={gravaAPlataformas} ></textarea>
                     </div>
 
                   </div>
@@ -266,7 +278,7 @@ const GDD: React.FC = () => {
                     <h1 className="display-4 fst-italic"></h1>
                     <p className="lead my-3 ">Metas e Definições</p>
                     <div className="container-text">
-                      <textarea className="full-width px-0"></textarea>
+                      <textarea className="full-width px-0" value={metas} onChange={gravaMetas}></textarea>
                     </div>
 
                   </div>

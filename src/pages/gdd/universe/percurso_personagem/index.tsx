@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [percursoP, setPercursoP] = useState(() => {
+    const storedPercursoP = localStorage.getItem('percursoP');
+    return storedPercursoP !== null ? storedPercursoP : 'Qual o percurso do personagem principal?';
+  });
 
+  function gravaPercursoP(event : any) {
+    setPercursoP(event.target.value)
+    localStorage.setItem('percursoP',percursoP)
+    console.log(localStorage.getItem('percursoP'))
+  }
   
   return (
     <div className ="container">
@@ -67,7 +76,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Desenvolvimento dos Personagens</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={percursoP} onChange={gravaPercursoP}></textarea> 
       </div>
       
     </div>

@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [tutorial, setTutorial] = useState(() => {
+    const storedTutorial = localStorage.getItem('tutorial');
+    return storedTutorial !== null ? storedTutorial : 'Como você irá apresentar seu jogo aos seus jogadores?';
+  });
 
+  function gravaTutorial(event : any) {
+    setTutorial(event.target.value)
+    localStorage.setItem('tutorial',tutorial)
+    console.log(localStorage.getItem('tutorial'))
+  }
   
   return (
     <div className ="container">
@@ -67,9 +76,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Tutorial</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={tutorial} onChange={gravaTutorial}></textarea> 
       </div>
       
     </div>

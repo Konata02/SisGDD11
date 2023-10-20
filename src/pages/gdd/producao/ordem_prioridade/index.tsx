@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [ordemP, setOrdemP] = useState(() => {
+    const storedOrdemP = localStorage.getItem('ordemP');
+    return storedOrdemP !== null ? storedOrdemP : 'Quais os softwares ou ferramentas que serão usadas no projeto?';
+  });
 
+  function gravaOrdemP(event : any) {
+    setOrdemP(event.target.value)
+    localStorage.setItem('ordemP',ordemP)
+    console.log(localStorage.getItem('ordemP'))
+  }
   
   return (
     <div className ="container">
@@ -65,7 +74,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Ordem de Prioridade</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={ordemP} onChange={gravaOrdemP}></textarea> 
       </div>
       
     </div>

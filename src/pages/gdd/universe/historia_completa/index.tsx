@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [historiaC, setHistoriaC] = useState(() => {
+    const storedHistoriaC = localStorage.getItem('historiaC');
+    return storedHistoriaC !== null ? storedHistoriaC : 'Qual a história de seu jogo?';
+  });
 
+  function gravaHistoriaC(event : any) {
+    setHistoriaC(event.target.value)
+    localStorage.setItem('historiaC',historiaC)
+    console.log(localStorage.getItem('historiaC'))
+  }
   
   return (
     <div className ="container">
@@ -74,7 +83,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Narrativa do Jogo</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={historiaC} onChange={gravaHistoriaC}></textarea> 
       </div>
       
     </div>

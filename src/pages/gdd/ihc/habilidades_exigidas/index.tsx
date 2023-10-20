@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [habilidadeE, setHabilidadeE] = useState(() => {
+    const storedHabilidadeE = localStorage.getItem('habilidadeE');
+    return storedHabilidadeE !== null ? storedHabilidadeE : 'O que seus jogadores precisam para jogar?';
+  });
 
+  function gravaHabilidadeE(event : any) {
+    setHabilidadeE(event.target.value)
+    localStorage.setItem('habilidadeE',habilidadeE)
+    console.log(localStorage.getItem('habilidadeE'))
+  }
   
   return (
     <div className ="container">
@@ -62,9 +71,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Habilidades exigidas</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={habilidadeE} onChange={gravaHabilidadeE}></textarea> 
       </div>
       
     </div>

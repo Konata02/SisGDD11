@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [referencias, setReferencias] = useState(() => {
+    const storedReferencias = localStorage.getItem('referencias');
+    return storedReferencias!== null ? storedReferencias : 'Quais as referências de seu jogo?';
+  });
 
+  function gravaReferencias(event : any) {
+    setReferencias(event.target.value)
+    localStorage.setItem('referencias',referencias)
+    console.log(localStorage.getItem('referencias'))
+  }
   
   return (
     <div className ="container">
@@ -64,9 +73,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Referências</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={referencias} onChange={gravaReferencias}></textarea> 
       </div>
       
     </div>

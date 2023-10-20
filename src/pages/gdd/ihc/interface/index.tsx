@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [interfaceI, setInterfaceI] = useState(() => {
+    const storedInterfaceI = localStorage.getItem('interfaceI');
+    return storedInterfaceI !== null ? storedInterfaceI : 'Como será a interface de seu jogo?';
+  });
 
+  function gravaInterfaceI(event : any) {
+    setInterfaceI(event.target.value)
+    localStorage.setItem('interfaceI',interfaceI)
+    console.log(localStorage.getItem('interfaceI'))
+  }
   
   return (
     <div className ="container">
@@ -45,7 +54,7 @@ const GDD: React.FC = () => {
                   <p className="example-container text-white lead my-1">
                     São varias as caracteristicas que podem ser facilitadores para a orientação do jogador, através da interface os jogadores podem 
                     receber feedbacks de atributos extremamete relevantes, como a velocidade dentro de um jogo de corrida, a vida de um personagem conforme ele 
-                    recebe dano, os controles que podem ser utilizados, a quantidade de recursos que podem ser alocados ou quanto faltam para que possam. São inúmeros
+                    recebe dano, os Interface que podem ser utilizados, a quantidade de recursos que podem ser alocados ou quanto faltam para que possam. São inúmeros
                     fatores que podem ser dispostos na interface, mas o mais importante é que a interface não seja poluída e que seja intuitiva. A interface serve de auxilio
                     principalmente para dispor informações na tela, porém, cuidado com jogos que necessitam de muitas informações, como exemplo MMORPG, é necessário muito cuidado
                     para balancear quais informações sao de extrema relevância, o que fica em segundo plano e qual o tamanho da interface. A interface jamais deve atrapalhar a 
@@ -64,9 +73,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Interface</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={interfaceI} onChange={gravaInterfaceI}></textarea> 
       </div>
       
     </div>

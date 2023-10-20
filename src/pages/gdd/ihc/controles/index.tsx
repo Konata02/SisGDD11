@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [controles, setControles] = useState(() => {
+    const storedControles = localStorage.getItem('controles');
+    return storedControles !== null ? storedControles : 'Como será a Controles de seu jogo?';
+  });
 
+  function gravaControles(event : any) {
+    setControles(event.target.value)
+    localStorage.setItem('controles',controles)
+    console.log(localStorage.getItem('controles'))
+  }
   
   return (
     <div className ="container">
@@ -64,9 +73,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Sobre os controles</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={controles}  onChange={gravaControles} ></textarea> 
       </div>
       
     </div>

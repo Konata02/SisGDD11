@@ -16,8 +16,28 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [ferramentasN, setFerramentasN] = useState(() => {
+    const storedFerramentasN = localStorage.getItem('ferramentasN');
+    return storedFerramentasN !== null ? storedFerramentasN : 'Quais os softwares ou ferramentas que serão usadas no projeto?';
+  });
 
+  function gravaFerramentasN(event : any) {
+    setFerramentasN(event.target.value)
+    localStorage.setItem('ferramentasN',ferramentasN)
+    console.log(localStorage.getItem('ferramentasN'))
+  }
   
+  const [ferramentasC, setFerramentasC] = useState(() => {
+    const storedFerramentasC = localStorage.getItem('ferramentasC');
+    return storedFerramentasC !== null ? storedFerramentasC : 'Quais os softwares ou ferramentas que serão usadas no projeto?';
+  });
+
+  function gravaFerramentasC(event : any) {
+    setFerramentasC(event.target.value)
+    localStorage.setItem('ferramentasC',ferramentasC)
+    console.log(localStorage.getItem('ferramentasC'))
+  }
+
   return (
     <div className ="container">
       <header>
@@ -62,11 +82,11 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Ferramentas Necessárias</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0"value={ferramentasN} onChange={gravaFerramentasN}></textarea> 
       </div>
       <p className="lead my-3 ">Ferramentas Cogitadas </p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={ferramentasC} onChange={gravaFerramentasC}></textarea> 
       </div>
       
     </div>

@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [progressão, setProgressão] = useState(() => {
+    const storedProgressão = localStorage.getItem('progressão');
+    return storedProgressão !== null ? storedProgressão : 'Como seu jogo progride ao longo de sua jogabilidade?';
+  });
 
+  function gravaProgressão(event : any) {
+    setProgressão(event.target.value)
+    localStorage.setItem('progressão',progressão)
+    console.log(localStorage.getItem('progressão'))
+  }
   
   return (
     <div className ="container">
@@ -66,9 +75,9 @@ const GDD: React.FC = () => {
     
     <div className="col-lg-6 px-0 ">
       <h1 className="display-4 fst-italic"></h1>
-      <p className="lead my-3 ">Conceito da Jogabilidade</p>
+      <p className="lead my-3 ">Progressão</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={progressão}  onChange={gravaProgressão}></textarea> 
       </div>
       
     </div>

@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [desafios, setDesafios] = useState(() => {
+    const storedDesafios = localStorage.getItem('desafios');
+    return storedDesafios !== null ? storedDesafios : 'Quais são os desafios de seu jogo narrativamente falando?';
+  });
 
+  function gravaDesafios(event : any) {
+    setDesafios(event.target.value)
+    localStorage.setItem('desafios',desafios)
+    console.log(localStorage.getItem('desafios'))
+  }
   
   return (
     <div className ="container">
@@ -64,7 +73,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Desafios</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={desafios} onChange={gravaDesafios}></textarea> 
       </div>
       
     </div>

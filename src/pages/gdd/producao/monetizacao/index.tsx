@@ -16,6 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [monetização, setMonetização] = useState(() => {
+    const storedMonetização = localStorage.getItem('monetização');
+    return storedMonetização !== null ? storedMonetização : 'Quais os softwares ou ferramentas que serão usadas no projeto?';
+  });
+
+  function gravaMonetização(event : any) {
+    setMonetização(event.target.value)
+    localStorage.setItem('monetização',monetização)
+    console.log(localStorage.getItem('monetização'))
+  }
 
   
   return (
@@ -64,7 +74,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Monetização</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={monetização} onChange={gravaMonetização}></textarea> 
       </div>
       
     </div>

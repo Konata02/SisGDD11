@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [datas, setDatas] = useState(() => {
+    const storedDatas = localStorage.getItem('datas');
+    return storedDatas !== null ? storedDatas : 'Qual o cronograma a ser seguido?';
+  });
 
+  function gravaDatas(event : any) {
+    setDatas(event.target.value)
+    localStorage.setItem('datas',datas)
+    console.log(localStorage.getItem('datas'))
+  }
   
   return (
     <div className ="container">
@@ -60,7 +69,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Cronogramas Estipulados</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={datas} onChange={gravaDatas}></textarea> 
       </div>
       
     </div>

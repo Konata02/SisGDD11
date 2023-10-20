@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [recursos, setRecursos] = useState(() => {
+    const storedRecursos = localStorage.getItem('recursos');
+    return storedRecursos !== null ? storedRecursos : 'Quais os softwares ou ferramentas que serão usadas no projeto?';
+  });
 
+  function gravaRecursos(event : any) {
+    setRecursos(event.target.value)
+    localStorage.setItem('recursos',recursos)
+    console.log(localStorage.getItem('recursos'))
+  }
   
   return (
     <div className ="container">
@@ -63,7 +72,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Recursos necessários</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={recursos} onChange={gravaRecursos}></textarea> 
       </div>
 
       <p className="lead my-3 ">Recursos que se possui</p>

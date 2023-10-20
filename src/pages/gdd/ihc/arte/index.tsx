@@ -16,7 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [arte, setArte] = useState(() => {
+    const storedArte = localStorage.getItem('arte');
+    return storedArte !== null ? storedArte : 'Como será a arte de seu jogo?';
+  });
 
+  function gravaArte(event : any) {
+    setArte(event.target.value)
+    localStorage.setItem('arte',arte)
+    console.log(localStorage.getItem('arte'))
+  }
   
   return (
     <div className ="container">
@@ -66,7 +75,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Arte</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={arte} onChange={gravaArte}></textarea> 
       </div>
       
     </div>

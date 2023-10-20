@@ -16,6 +16,16 @@ const GDD: React.FC = () => {
     setShowExample(!showExample);
   };
 
+  const [trilhaS, setTrilhaS] = useState(() => {
+    const storedTrilhaS = localStorage.getItem('trilhaS');
+    return storedTrilhaS !== null ? storedTrilhaS : 'Como será a interface de seu jogo?';
+  });
+
+  function gravaTrilhaS(event : any) {
+    setTrilhaS(event.target.value)
+    localStorage.setItem('trilhaS',trilhaS)
+    console.log(localStorage.getItem('trilhaS'))
+  }
 
   
   return (
@@ -65,7 +75,7 @@ const GDD: React.FC = () => {
       <h1 className="display-4 fst-italic"></h1>
       <p className="lead my-3 ">Trilha Sonora</p>
       <div className="container-text">
-        <textarea className="full-width px-0"></textarea> 
+        <textarea className="full-width px-0" value={trilhaS} onChange={gravaTrilhaS}></textarea> 
       </div>
 
       <div className="spacing-container"></div> 
